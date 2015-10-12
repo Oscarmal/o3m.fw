@@ -38,3 +38,7 @@
 	ErrorDocument 404 /pae/omaldonado/o3m.fw/src/error/error_page.php?e=404
 	ErrorDocument 500 /pae/omaldonado/o3m.fw/src/error/error_page.php?e=500
 ## FIN Error pages ##
+
+##Redirección 
+	#Redirect 301 /pae/omaldonado/o3m.fw/index.html /pae/omaldonado/o3m.fw/8fe58c2c3a3d77cdca6c21bdcbbb2f68/79c050078b734876858e9535abb453e1
+##FIN redirección

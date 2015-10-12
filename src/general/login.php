@@ -6,7 +6,7 @@ require_once($Path[src].strtolower(MODULO).'/dao.login.php');
 require_once($Path[src].'views.vars.'.strtolower(MODULO).'.php');
 // Lógica de negocio
 if($in[accion]=='login-perfiles'){
-	if(!empty($ins[usuario]) && !empty($ins[clave])){		
+	if(!empty($ins[usuario]) && !empty($ins[clave])){			
 		if($usuario = login($ins[usuario], md5($in[clave]))){
 			llena_sesion($usuario);
 			if(!$usuario[login]){
@@ -23,9 +23,8 @@ if($in[accion]=='login-perfiles'){
 				$success = 'popup';
 			}else{
 				// Respuesta
-				$modulo = encrypt('GENERAL',1);
-				$seccion = encrypt('INICIO',1);
-				// $url = "?m=$modulo&s=$seccion";
+				$modulo = $parm[GENERAL];
+				$seccion = $parm[INICIO];
 				$url = $Path['url']."$modulo/$seccion";
 				if($usuario[login]==1){					
 					$success = 'autorizado';
@@ -36,10 +35,8 @@ if($in[accion]=='login-perfiles'){
 				llena_sesion($usuario);
 			}
 		}else{
-			$modulo = encrypt('GENERAL',1);
-			// $seccion = encrypt('LOGIN',1);
-			// $url = "?m=$modulo&s=$seccion&e=1";
-			$seccion = encrypt('ERROR',1);
+			$modulo = $parm[GENERAL];
+			$seccion = $parm[ERROR];
 			$url = $Path['url']."$modulo/$seccion";
 			$success = false;		
 		}
@@ -49,8 +46,8 @@ if($in[accion]=='login-perfiles'){
 elseif($in[accion]=='login-perfil-select'){
 	if(!empty($ins[id_usuario])){
 		$usuario = login_unico($in[id_usuario]);
-		$modulo = encrypt('GENERAL',1);
-		$seccion = encrypt('INICIO',1);
+		$modulo = $parm[GENERAL];
+		$seccion = $parm[INICIO];
 		$url = $Path['url']."$modulo/$seccion";
 		llena_sesion($usuario);					
 		$success = true;		
@@ -66,15 +63,13 @@ elseif($in[accion]=='primer_logueo'){
 	else{
 		$success=update_pass_user(md5($in[pass]),$_SESSION[user][id_personal]);
 		if($success){
-			$modulo = encrypt('GENERAL',1);
-			$seccion = encrypt('INICIO',1);
+			$modulo = $parm[GENERAL];
+			$seccion = $parm[INICIO];
 			$CONTENIDO = $Path['url']."$modulo/$seccion";
 		}
 		else{
-			$modulo = encrypt('GENERAL',1);
-			// $seccion = encrypt('LOGIN',1);
-			// $CONTENIDO = "?m=$modulo&s=$seccion&e=1";
-			$seccion 	= encrypt('ERROR',1);
+			$modulo 	= $parm[GENERAL];
+			$seccion 	= $parm[ERROR];
 			$CONTENIDO 	= $Path['url']."$modulo/$seccion";
 			$success 	= true;
 		}
@@ -91,8 +86,8 @@ elseif($in[accion]=='contrasenia_popup'){
 elseif($in[accion]=='contrasenia_cambio'){	
 	$success=update_pass_user(md5($in[pass]), $_SESSION[user][id_personal]);
 	if($success){
-		$modulo = encrypt('GENERAL',1);
-		$seccion = encrypt('INICIO',1);
+		$modulo = $parm[GENERAL];
+		$seccion = $parm[INICIO];
 		$CONTENIDO = $Path['url']."$modulo/$seccion";
 	}
 	$data = array(success => $success, url => $CONTENIDO);

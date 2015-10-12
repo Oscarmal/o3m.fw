@@ -5,12 +5,17 @@
 * Modulos => $in[m]; Secciones => $in[s];
 */
 // Valida parametro URL
-if(!$in[m]){header('location: '.$Raiz[url]);}
+if(!$in[m] || !isset($in[m])){header('location: '.$Raiz[url]);}
 // Modulos
 define(MOD_GENERAL, 'views.vars.general.php');
 define(MOD_CONTENEDOR, 'views.vars.contenedor.php');
-$modulo = $in[m];
-$seccion = $in[s];
+if($cfg[encrypt_onoff]){
+	$modulo = $in[m];
+	$seccion = $in[s];
+}else{
+	$modulo = strtoupper($in[m]);
+	$seccion = strtoupper($in[s]);
+}
 // Distingue entre Login y Contendor
 if(enArray($seccion,array(LOGIN=>''))){
 	require_once($Path[src].MOD_GENERAL);	

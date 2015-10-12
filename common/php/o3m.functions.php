@@ -167,14 +167,18 @@ function plantillaRtf($Plantilla,$Ruta,$NuevoDoc,$Variables,$CharAbre,$CharCierr
 function encrypt($input,$opt=false){
 	global $cfg;
 	$Key = $cfg[encrypt_key]; 
-	if($opt){
-		$output = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($Key), $input, MCRYPT_MODE_CBC, md5(md5($Key))));
-    	// $output = urlencode($output);
-    	$output = md5($output);
+	if($cfg[encrypt_onoff]){
+		if($opt){
+			$output = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($Key), $input, MCRYPT_MODE_CBC, md5(md5($Key))));
+	    	// $output = urlencode($output);
+	    	$output = md5($output);
+		}else{
+			// $input = urldecode($input);
+			$output = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($Key), base64_decode($input), MCRYPT_MODE_CBC, md5(md5($Key))), "\0");
+	    }
 	}else{
-		// $input = urldecode($input);
-		$output = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($Key), base64_decode($input), MCRYPT_MODE_CBC, md5(md5($Key))), "\0");
-    }
+		$output = $input;
+	}
 	return ($output);	
 }
 

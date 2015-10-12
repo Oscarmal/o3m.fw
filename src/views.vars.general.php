@@ -65,7 +65,7 @@ function vars_login($urlParams){
 				 MORE 		=> incJs($Path[srcjs].$modulo.'login.js')
 				 			  .incCss($Path[css].'maruti-login.css')
 				,MODULE 	=> strtolower(MODULO)
-				,SECTION 	=> ($seccion)				
+				,SECTION 	=> strtolower($seccion)				
 			);
 	$texto = array(
 				 login 		=> $dic[general][login]

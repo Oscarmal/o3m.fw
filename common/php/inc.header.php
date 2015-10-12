@@ -43,12 +43,13 @@ require_once($Raiz[local].$cfg[php_tpl]);
 require_once($Raiz[local].$cfg[path_php].'inc.constructHtml.php');
 require_once($Path[src].'dao.online.php');
 require_once($Path[local].'phpmailer/inc.email.smtp.php');
-
+// Parametros de URL encriptados o legibles
+if($cfg[encrypt_onoff]){ $parm = $var; }else{ foreach($var as $llave => $valor){$parm[$llave] = strtolower($llave);} }
 // Parsea parámetros obtenidos por URL y los pone en arrays: $in[] y $ins[]
 parseFormSanitizer($_GET, $_POST); # $ins[]
 parseForm($_GET, $_POST); # $in[]
 // Cierra de Sesión de usuario
-if($_SESSION[user][id_usuario] && $in[s]==$var[LOGOUT]) { 
+if($_SESSION[user][id_usuario] && $in[s]==$parm[LOGOUT]) { 
 	unset($_SESSION[user]);
 }
 // Verifica vigencia de sesion
@@ -107,19 +108,21 @@ if($idioma=='EN'){
 }
 diccionario($Raiz[local].$dicFile);
 // Valida autenticación de Usuario
-if(!$_SESSION[user][id_usuario] && $in[s]!=$var[LOGIN]) { 
-	header('location: '.$Raiz[url].$var[GENERAL].'/'.$var[LOGIN]);
+// $usecc = ($cfg[encrypt_onoff])?$parm[LOGIN]:strtoupper($parm[LOGIN]);
+// echo $in[s].' '.$parm[LOGIN]; die();
+if(!$_SESSION[user][id_usuario] && $in[s]!=$parm[LOGIN]) { 
+	header('location: '.$Raiz[url].$parm[GENERAL].'/'.$parm[LOGIN]);
 	exit();
 }
 
 #Log Txt | (nombre_archivo, usuario ID, usuario_nombre, usuario, nivel, ruta, URLparams)
-if($cfg[log_onoff] && $in[s]!=$var[LOGIN]){
+if($cfg[log_onoff] && $in[s]!=$parm[LOGIN]){
 	$params = ($in) ? implode('&', array_map(function ($v, $k) { return sprintf("%s='%s'", $k, $v); }, $in, array_keys($in))) : '';
 	#$params='';
 	LogTxt('he_'.$usuario[empresa],$usuario[id_usuario],$usuario[nombre],$usuario[usuario],$usuario[grupo],$Raiz[local],$params);
 }	
 #Online
-if($cfg[online_onoff] && $in[s]!=$var[LOGIN]){
+if($cfg[online_onoff] && $in[s]!=$parm[LOGIN]){
 	$ultimo_clic=time();
 	if(online_select($usuario[id_usuario])){
 		online_update($usuario[id_usuario], $ultimo_clic);
