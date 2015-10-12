@@ -2,7 +2,7 @@
 /**
 * Descripcion:	Establece ambiente de trabajo para cada página
 * Creación:		2014-06-11
-* Modificación:	2014-09-01, 2014-12-02
+* Modificación:	2014-09-01, 2014-12-02; 2015-10-12
 * @author 		Oscar Maldonado - O3M
 *
 */
@@ -98,7 +98,6 @@ pais_params($Raiz[local].$pais_params);
 // 	default : $pais_params=$pais_params[mexico]; break;
 // }
 
-
 # Diccionario de idioma
 $idioma = (!isset($_SESSION[idioma]))?strtoupper($cfg[idioma]):strtoupper($_SESSION[idioma]);
 if($idioma=='EN'){
@@ -108,8 +107,6 @@ if($idioma=='EN'){
 }
 diccionario($Raiz[local].$dicFile);
 // Valida autenticación de Usuario
-// $usecc = ($cfg[encrypt_onoff])?$parm[LOGIN]:strtoupper($parm[LOGIN]);
-// echo $in[s].' '.$parm[LOGIN]; die();
 if(!$_SESSION[user][id_usuario] && $in[s]!=$parm[LOGIN]) { 
 	header('location: '.$Raiz[url].$parm[GENERAL].'/'.$parm[LOGIN]);
 	exit();
@@ -118,7 +115,6 @@ if(!$_SESSION[user][id_usuario] && $in[s]!=$parm[LOGIN]) {
 #Log Txt | (nombre_archivo, usuario ID, usuario_nombre, usuario, nivel, ruta, URLparams)
 if($cfg[log_onoff] && $in[s]!=$parm[LOGIN]){
 	$params = ($in) ? implode('&', array_map(function ($v, $k) { return sprintf("%s='%s'", $k, $v); }, $in, array_keys($in))) : '';
-	#$params='';
 	LogTxt('he_'.$usuario[empresa],$usuario[id_usuario],$usuario[nombre],$usuario[usuario],$usuario[grupo],$Raiz[local],$params);
 }	
 #Online
