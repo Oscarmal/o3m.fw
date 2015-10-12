@@ -7,7 +7,7 @@
 */
 
 // -- Principales
-function contenedorHtml($template='error.html', $params=array()){
+function contenedorHtml($template='system/error.html', $params=array()){
 	global $Path;
 	#GENERAL
 	$htmlTpl = $Path['html'].$template;
@@ -19,7 +19,7 @@ function contenedorHtml($template='error.html', $params=array()){
 	$html->set('INCLUDES', includesHtml($more));
 	$html->set('FOOTER', footerHtml());
 	$html->set('POPUPS', popupsHtml());	
-	$contenido_tpl 		= ($params[CONT_VIEW]=='')?'error.html':$params[CONT_VIEW];
+	$contenido_tpl 		= ($params[CONT_VIEW]=='')?'system/error.html':$params[CONT_VIEW];
 	$contenido_params 	= (!$params[CONT_PARAMS])?array():$params[CONT_PARAMS];
 	$html->set('CONTENIDO', contenidoHtml($contenido_tpl, $contenido_params));	
 	// Busca variables adicionales dentro array $params
@@ -33,7 +33,7 @@ function contenedorHtml($template='error.html', $params=array()){
 	$html=$html->output();
 	return $html;
 }
-function contenidoHtml($template='error.html', $params=array()){
+function contenidoHtml($template='system/error.html', $params=array()){
 	global $Path;
 	#GENERAL
 	$htmlTpl = $Path['html'].$template;
@@ -57,7 +57,7 @@ function contenidoHtml($template='error.html', $params=array()){
 	return $html;
 }
 // -- Apoyos
-function includesHtml($more='', $template='includes.html', $params=array()){
+function includesHtml($more='', $template='system/includes.html', $params=array()){
 	global $Path, $Raiz, $cfg;
 	#INCLUDES HTML
 	$htmlTpl = $Path['html'].$template;
@@ -72,7 +72,7 @@ function includesHtml($more='', $template='includes.html', $params=array()){
 	return $includes;
 }
 
-function footerHtml($template='footer.html', $params=array()){
+function footerHtml($template='system/footer.html', $params=array()){
 	global $Path, $Raiz;
 	#FOOTER CONTENIDO
 	$htmlTpl = $Path['html'].$template;
@@ -87,7 +87,7 @@ function footerHtml($template='footer.html', $params=array()){
 function popupsHtml($params=array()){
 	global $Path;
 	#POPUPS
-	$template='popups.html';
+	$template='system/popups.html';
 	$htmlTpl = $Path['html'].$template;
 	$popups = new Template($htmlTpl);
 	// Busca variables adicionales dentro array $params

@@ -17,11 +17,11 @@ $modulos = array(
 // $modulo = strtoupper(enArray($modulo,$modulos));
 #Vistas
 $contenedor = array(
-			 CONTENEDOR => 'frm_contenedor.html'
-			,FRM_HEADER => 'frm_header.html'
-			,FRM_MENU 	=> 'frm_menu.html'
-			,FRM_FOOTER => 'frm_footer.html'
-			,FRM_CONTENT=> 'frm_contenido.html'
+			 CONTENEDOR => 'system/frm_contenedor.html'
+			,FRM_HEADER => 'system/frm_header.html'
+			,FRM_MENU 	=> 'system/frm_menu.html'
+			,FRM_FOOTER => 'system/frm_footer.html'
+			,FRM_CONTENT=> 'system/frm_contenido.html'
 		);
 
 // $visitas = MODULO => SECCIONES
