@@ -1,0 +1,29 @@
+        <table width="100%" border="1" cellspacing="2" cellpadding="2" class="display captura" id="jGrid">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre<br/>Completo</th>
+            <th>ID<br/>Nómina</th>
+            <th>CID<br/>Empleado</th>
+            <th>Estado</th>
+            <th>Sucursal</th>
+            <th width="50">Área</th>
+            <th width="50">Puesto</th>       
+            <th width="90">Fecha</th>
+            <th>Tiempo<br/>Extra<br/>Autorizado</th>
+            <!-- <th>Horas<br/>Redondeadas</th> -->
+            <!-- <th>Dobles</th>
+            <th>Triples</th> -->
+            <th>Seleccionar<br/>
+            <input type="checkbox" id="selectall"/>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {TBL_RESULTS}
+        </tbody>
+        </table>
+        <br/>
+        <div align="center" style="height:100px;">
+            <input type="button" class="btn btn-gray" value="Asignar Semana a seleccionados" onclick="asigna_semana()">
+        </div>

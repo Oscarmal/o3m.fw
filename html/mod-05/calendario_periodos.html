@@ -1,0 +1,67 @@
+        <table width="100%" border="0" cellspacing="2" cellpadding="2" class="captura">
+          <tr>
+            <th width="8%" scope="col">&nbsp;</th>
+            <th width="14%" scope="col">&nbsp;</th>
+            <th width="27%" scope="col">&nbsp;</th>
+            <th width="2%" scope="col">&nbsp;</th>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">Empresa:</td>
+            <td >
+                {catalgo_empresa}</td>
+            <td>&nbsp;</td>
+          </tr> 
+          <tr>
+            <td>&nbsp;
+            <input type="hidden" name="id_usuario" id="id_usuario" value="{id_usuario}">
+            </td>
+            <td class="tbl_labels">Tipo:</td>
+            <td> 
+                <!-- <img src="{PATH_IMG}astericso1.jpg" width="5px" height="5px"> -->
+                {catalogo_calendario_tipo}
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">Fecha inicio:</td>
+            <td >
+              <!-- <img src="{PATH_IMG}astericso1.jpg" width="5px" height="5px"> -->
+              <input type="text" name="fecha_inicio" id="fecha_inicio" class="calendario"></td>
+            <td>&nbsp;</td>
+          </tr>
+           <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">Fecha final:</td>
+            <td >&nbsp;&nbsp;<input type="text" name="fecha_fin" id="fecha_fin" class="calendario"></td>
+            <td>&nbsp;</td>
+          </tr>
+                                   
+          <tr>
+            <td>&nbsp;</td>
+            <td colspan="2" align="center">
+            <input type="button" id="btnGuardar" name="btnGuardar" class="btn btn-gray" value="Guardar" onclick="btnSubmit()">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+        <br/>
+        <div class="tabla-grupos">
+          <table id="tbl_grupos" width="100%" border="0" cellspacing="2" cellpadding="3">
+            <thead>
+              <tr>
+                <th width="10%">Año</th>
+                <!-- <th width="10%">ID Empresa</th>   -->
+                <th width="40%">Empresa</th>                
+                <th width="20%">Fechas Capturadas</th>
+                <th width="1%"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {TBL_CALENDARIO}
+            </tbody>
+          </table>
+        </div>
+        <br/>
+        <div align="center" style="height:100px;"></div>

@@ -1,0 +1,76 @@
+        <table width="100%" border="0" cellspacing="2" cellpadding="2" class="captura">
+          <tr>
+            <th width="8%" scope="col">&nbsp;</th>
+            <th width="14%" scope="col">&nbsp;</th>
+            <th width="27%" scope="col">&nbsp;</th>
+            <th width="2%" scope="col">&nbsp;</th>
+          </tr>
+          <tr>
+            <td>&nbsp;
+            <input type="hidden" name="id_usuario" id="id_usuario" value="{id_usuario}">
+            <input type="hidden" name="periodo_inicio" id="periodo_inicio" value="{periodo_inicio}">
+            <input type="hidden" name="periodo_fin" id="periodo_fin" value="{periodo_fin}">
+            </td>
+            <td class="tbl_labels"><label class="control-label">CID Empleado:</label></td>
+            <td> <input type="text" name="empleado_num" id="empleado_num" value="{empleado_num}"  readonly></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels"><label class="control-label">Nombre:</label></td>
+            <td ><input type="text" name="empleado_nombre" id="empleado_nombre" value="{empleado_nombre}" size="80" readonly></td>
+            <td>&nbsp;</td>
+          </tr>                        
+          <tr>
+            <td>&nbsp;</td>                    
+            <td class="tbl_labels"><label class="control-label">Horas:</label></td>
+            <td class="slider-container">
+                <input type="text" id="txtHoras" name="txtHoras" class="slider-label " readonly maxlength="2"/>
+                <div id="slider-horas" class="slider-bar" style="width:160px;"></div>
+
+            </div>
+            <td>&nbsp;</td>
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>                    
+            <td class="tbl_labels"><label class="control-label">Minutos:</label></td>
+            <td class="slider-container">
+                <input type="text" id="txtMinutos" name="txtMinutos" class="slider-label " readonly onkeyup="solo_num(this.id);" maxlength="2" />
+                <div id="slider-minutos" class="slider-bar" style="width:160px;"></div>
+
+            </div>
+            <td>&nbsp;</td>
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels"><label class="control-label">Fecha de evento:</label></td>
+            <td>
+            <input type="text" name="txtFecha" id="txtFecha" class="calendario">
+            </td>
+            <td>&nbsp;</td>
+          </tr>                   
+          <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels"><label class="control-label">Fecha de registro:</label></td>
+            <td>
+            <input type="text" name="captura_fecha" id="captura_fecha" value="{captura_fecha}"  readonly>
+            
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td colspan="2" align="center">
+            <input type="button" class="btn btn-gray" value="{guardar}" onclick="btnSubmit()">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="52">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>

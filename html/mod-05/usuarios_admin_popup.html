@@ -1,0 +1,91 @@
+        {MORE}
+        <div id="" style="border: 0px solid #333; margin-left:0px; width:112%;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+                <tbody>
+
+            <tr>
+            <td>&nbsp;
+            <input type="hidden" name="id_usuario" id="id_usuario" value="{id_usuario}">
+            <input type="hidden" name="id_personal" id="id_personal" value="{id_personal}">
+            <input type="hidden" name="id_empresa" id="id_empresa" value="{id_empresa}">
+            </td>
+            <td class="tbl_labels">Nombre:</td>
+            <td> 
+                <span class="requerido">*</span>
+                <input type="text" name="nombre" id="nombre" value="{nombre}" >
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">Apellido Paterno:</td>
+            <td >
+              <span class="requerido">*</span>
+              <input type="text" name="apellido_paterno" id="apellido_paterno" size="80" value="{paterno}"></td>
+            <td>&nbsp;</td>
+          </tr>
+           <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">Apellido Materno :</td>
+            <td >&nbsp;&nbsp;<input type="text" name="apellido_materno" id="apellido_materno" size="80" value="{materno}"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">Correo :</td>
+            <td >
+              <span class="requerido">*</span>
+            <input type="text" name="correo" id="correo" size="80" value="{correo}"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">Empresa:</td>
+            <td >
+                <span class="requerido">*</span>
+                <input type="text" name="empresa" id="empresa" size="80" value="{empresa}" readonly></td>
+            <td>&nbsp;</td>
+          </tr>   
+           <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">Sucursal:</td>
+            <td >
+              <span class="requerido">*</span>
+              {sucursal}
+            <td>&nbsp;</td>
+          </tr>  
+           <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">Puesto:</td>
+            <td >
+              <span class="requerido">*</span>
+              <input type="text" name="puesto" id="puesto" size="80" value="{puesto}" readonly></td>
+            <td>&nbsp;</td>
+          </tr>  
+           <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">CID Empleado:</td>
+            <td >
+              <span class="requerido">*</span>
+              <input type="text" name="no_empleado" id="no_empleado" size="80" value="{empleado_num}"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td class="tbl_labels">ID Nómina PAE:</td>
+            <td >
+              &nbsp;
+              <input type="text" name="id_nomina" id="id_nomina" size="80" value="{id_nomina}"></td>
+            <td>&nbsp;</td>
+          </tr> 
+           <tr>
+            <td>&nbsp;</td>
+            <td colspan="2" align="center">
+            <input id="btnCerrar" type="button" class="btn btn-gray" value="{cerrar}" onclick="location.reload(true);">
+            <input type="button" class="btn btn-gray" value="Actualizar" onclick="modificar_usuario()">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+                </tbody>
+            </table>
+        </div>

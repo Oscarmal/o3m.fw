@@ -1,0 +1,29 @@
+        <span id="div_empresa">{select_empresa}</span>
+        <span id="div_anio">{select_anio}</span>
+        <!-- <span id="div_periodo">{select_periodo}</span> -->
+        <span><input type="hidden" id="id_empresa" name="id_empresa" value="{ID_EMPRESA}" /></span>
+        <!-- <div id="grafico01" style="width: 100%; height: 100%; margin: 0 auto"></div> -->
+        <div class="tabla-reportes">
+          <table id="tbl_grupos" width="100%" border="0" cellspacing="1" cellpadding="3" class="reportes" >
+            <thead>
+              <tr>
+                <th width="10">Ver</th>
+                <th width="10">XLS</th>
+                <th>Empresa</th>
+                <th>Siglas</th>
+                <th>Año</th>
+                <th>Periodo</th>
+                <th>Horas<br/>Capturadas</th>
+                <th>Horas<br/>Autorizadas</th>
+                <th>Horas<br/>Pagadas</th>
+                <th>Horas<br/>Dobles</th>
+                <th>Horas<br/>Triples</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TBL_RESULTS}
+            </tbody>
+          </table>
+        </div>
+        <br/>
+        <div align="center" style="height:100px;"></div>

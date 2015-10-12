@@ -1,0 +1,40 @@
+#Impide listado de directorios
+	Options -Indexes
+#Orden de ejecucion
+	DirectoryIndex index.php index.html index.htm
+#Compresion de CSS, JS, XML y TXT
+	AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/x-javascript
+
+## URL's amigables ##
+	Options +FollowSymLinks
+
+# Activar RewriteEngine
+	RewriteEngine on 
+
+	RewriteBase /pae/omaldonado/o3m.fw
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f
+
+	RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$
+
+# Agregar slash al final de la url
+	RewriteRule ^(([a-z0-9\-]+/)*[a-z0-9\-]+)$ $1/ [NC,R=301,L]
+
+# Reescribir la URL solicitada por el usuario
+#   Entrada:  MODULO/SECCION
+#   Salida: index.php?m=MODULO&s=SECCION
+
+	RewriteRule ^(.+)/(.+)/$ site/?m=$1&s=$2 [QSA,NC,L]	
+
+## FIN URL's amigables
+
+## Error Pages ##
+	ErrorDocument 400 /pae/omaldonado/o3m.fw/src/error/error_page.php?e=400
+	ErrorDocument 401 /pae/omaldonado/o3m.fw/src/error/error_page.php?e=401
+	ErrorDocument 403 /pae/omaldonado/o3m.fw/src/error/error_page.php?e=403
+	ErrorDocument 404 /pae/omaldonado/o3m.fw/src/error/error_page.php?e=404
+	ErrorDocument 500 /pae/omaldonado/o3m.fw/src/error/error_page.php?e=500
+## FIN Error pages ##

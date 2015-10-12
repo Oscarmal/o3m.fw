@@ -1,0 +1,138 @@
+### DICCIONARIO ESPAÑOL-MX ###
+# General
+general|titulo=Inicio
+general|inicio=Inicio
+general|captura=Captura
+general|autorizacion=Autorizaciones
+general|busqueda=Búsqueda
+general|consulta=Consulta
+general|reportes=Reportes
+general|inplant=Inplant PAE
+general|admin=Administración
+general|ayuda=Ayuda
+general|login=Iniciar sesión
+general|usuario=Usuario
+general|clave=Clave
+general|entrar=Entrar
+general|mensaje=Mensaje
+general|enlace=Enlace
+general|correo=Correo
+general|salir=Salir
+general|cancelar=Cancelar
+general|msj_inicio=Bienvenido a O3M Framework. <br/><br/>Por favor, seleccione del menú superior la opción deseada.
+general|contrasenia=Cambiar contraseña
+general|modificar=Modificar
+# Error
+error|mensaje=No existe acción
+# Login
+login|msj_entrar=Ingrese sus datos de usuario
+login|msj_noauth=Sin autorización para accesar
+login|msj_salir=Sesión Cerrada
+# Captura
+captura|titulo=Captura de Horas Extra por día
+captura|index=Listado de Horas Extra
+captura|horas_extra=Captura de Horas Extra
+captura|guardar=Guardar
+# Autorizacion
+autorizacion|titulo=Autorización de horas extra
+autorizacion|autorizacion_titulo=Autorización de horas extra
+autorizacion|autorizacion_menu=Autorizar Horas Capturadas
+autorizacion|layout_titulo=Generación de Layout para NóminaPAE
+autorizacion|layout_menu=Layout para NóminaPAE
+autorizacion|cerrar=Cerrar
+autorizacion|guardar=Aplicar Autorizaciones
+autorizacion|index=Aplicar Autorizaciones
+autorizacion|listado=Listado de Autorizaciones ap.
+autorizacion|titulo2=Listado de Autorizaciones aplicadas
+autorizacion|genera_xls=Generar Layout XLS
+
+#autorizacion|titulo_autorizacion_1=Validación de Capturadas
+#autorizacion|titulo_autorizacion_2=Asiganción de Validadas
+#autorizacion|titulo_autorizacion_3=Autorización de Asignadas
+#autorizacion|titulo_autorizacion_4=Aprobación de Autorizadas
+#autorizacion|titulo_autorizacion_5=Aplicación de Aprobadas
+
+autorizacion|titulo_autorizacion_1=Autorización nivel 1
+autorizacion|titulo_autorizacion_2=Autorización nivel 2
+autorizacion|titulo_autorizacion_3=Autorización nivel 3
+autorizacion|titulo_autorizacion_4=Autorización nivel 4
+autorizacion|titulo_autorizacion_5=Autorización nivel 5
+
+autorizacion|autorizacion_1_titulo=Autorización nivel 1
+autorizacion|autorizacion_2_titulo=Autorización nivel 2
+autorizacion|autorizacion_3_titulo=Autorización nivel 3
+autorizacion|autorizacion_4_titulo=Autorización nivel 4
+autorizacion|autorizacion_5_titulo=Autorización nivel 5
+
+# Consulta
+consulta|titulo=Consultas
+consulta|captura_titulo=Listado de Horas Extra capturadas sin autorizar
+consulta|validacion_titulo=Listado de Validaciones aplicadas
+consulta|asignacion_titulo=Listado de Asignaciones aplicadas
+consulta|aprobada_titulo=Listado de Asignaciones aprobaciones
+
+#consulta|captura_menu=Listado de Horas Extra Cap.
+#consulta|autorizacion_menu=Listado de Validaciones
+#consulta|asignacion_menu=Listado de Asingaciones
+#consulta|aprobadas_menu=Listado de Aprobaciones
+
+consulta|titulo_autorizacion_1=Consulta de Autorizaciones
+consulta|titulo_autorizacion_2=Consulta de Autorizacion nivel 2
+consulta|titulo_autorizacion_3=Consulta de Autorizacion nivel 3
+consulta|titulo_autorizacion_4=Consulta de Autorizacion nivel 4
+consulta|titulo_autorizacion_5=Consulta de Autorizacion nivel 5
+consulta|titulo_autorizacion_seguimiento=Seguimiento de Autorizaciones
+
+consulta|consulta_autorizacion_1	=	Consulta de Autorizaciones
+consulta|consulta_autorizacion_2	=	Consulta de Autorizacion nivel 2
+consulta|consulta_autorizacion_3	=	Consulta de Autorizacion nivel 3
+consulta|consulta_autorizacion_4	=	Consulta de Autorizacion nivel 4
+consulta|consulta_autorizacion_5	=	Consulta de Autorizacion nivel 5
+consulta|consulta_autorizaciones	=	Seguimiento de Autorizaciones
+
+consulta|menu_consulta_pendientes = Seguimiento de Pendientes
+consulta|titulo_consulta_pendientes = Seguimiento de Pendientes
+
+
+# Reportes
+reportes|titulo=Reportes
+reportes|reporte01_menu=Reporte General
+reportes|reporte01_titulo=Reporte General de Horas Extra
+reportes|reporte02_menu=Reportes por Periodos
+reportes|reporte02_titulo=Reportes por Periodos
+
+#Inplant
+inplant|titulo=Inplant PAE
+
+inplant|layout=Asignación de semana
+inplant|layout_menu=Asignar semana
+inplant|xls=Generación de Layout NóminaPAE
+inplant|xls_menu=Generar Layout NóminaPAE
+inplant|xls_lista=Descarga de Layout NóminaPAE Generados
+inplant|xls_lista_menu=Descargar Layout NóminaPAE
+
+admin|layout=Asignación de semana
+admin|xls=Generación de Layout para Nómina PAE
+admin|xls_lista=Descarga de Archivos generados
+
+#Administracion
+admin|titulo=Administración
+admin|usuarios_menu=Usuarios
+admin|usuarios_titulo=Administración de Usuarios
+admin|sincronizar_menu=Sincronizar Empleados
+admin|alta_usuario=Alta Usuario Nuevo
+admin|sincronizar_titulo=Sincronizar Empleados con NóminaPAE
+admin|sincronizar_usuarios=Sincronizar con datos de NóminaPAE
+admin|sincronizar_empresa_boton=Sincronizar Empresas
+admin|sincronizar_empresa=Sincronizar Empresas
+admin|sincronizar_empresas_titulo=Sincronizar Empresas
+
+
+admin|admin_usuarios_menu=Administración de Usuarios
+admin|admin_usuarios_titulo=Administración de Usuarios
+
+admin|admin_calendario_menu=Calendario de Periodos
+admin|admin_calendario_titulo=Calendario de Periodos
+
+admin|admin_supervisores_menu=Usuarios Pendientes
+admin|admin_supervisores_titulo=Usuarios Pendientes - Actualización de datos

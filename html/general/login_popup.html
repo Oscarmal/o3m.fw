@@ -1,0 +1,37 @@
+        {MORE}
+        <div id="prueba" style="border: 0px solid #333; ">
+            <table width="150%" border="0" cellspacing="0" cellpadding="0">            
+                <tbody>
+                  <tr>
+                    <th align="right" width="50%">Nueva clave:&nbsp;</th>
+                    <td align="left">
+                        <input type="password" name="pass" id="pass">
+                        <input type="hidden" name="validation" id="validation" value=1>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th align="right">Confirmar clave:&nbsp;</th>
+                    <td align="left">
+                        <input type="password" name="confirm" id="confirm">
+                        <input type="hidden" name="validation" id="validation" value=1>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" height="3px;"><hr/></td>
+                  </tr>
+                    <td colspan="2">
+                        <div id="captura">                        
+                            <table width="100%" border="0">
+                                    <td colspan="5" align="center">
+                                        <input id="btnCerrar" type="button" class="btn btn-gray" value="{cerrar}" onclick="location.reload(true);">
+                                        &nbsp;&nbsp;&nbsp;
+                                        <input id="btnGuardar" type="button" class="btn btn-gray" value="{guardar}" onclick="contrasenia('{accion}','{id_usuario}')">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>

@@ -1,0 +1,33 @@
+### ENGLISH DICTIONARY-USA ###
+## Titles
+captura|titulo=Ingreso de horas extra
+autorizacion|titulo=Autorización de horas extra
+consulta|titulo=Consultas
+reportes|titulo=Reportes
+## Messages
+# General
+general|inicio=Home
+general|captura=Capture
+general|autorizacion=Authorizations
+general|busqueda=Search
+general|consulta=Browse
+general|reportes=Reports
+general|administracion=Administration
+general|ayuda=Help
+general|login=Login
+general|usuario=User
+general|clave=Password
+general|entrar=Enter
+general|mensaje=Message
+general|enlace=Link
+general|correo=eMail
+general|salir=Exit
+general|msj_inicio=Welcome to system
+# Error
+error|mensaje=No action
+ # Login
+login|msj_entrar=Enter your user data
+login|msj_noauth=No authorization to access
+login|msj_salir=Closed Session
+#Captura
+captura|guardar=Save

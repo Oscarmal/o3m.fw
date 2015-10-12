@@ -1,0 +1,89 @@
+        {MORE}
+        <div id="" style="border: 0px solid #333; margin-left:0px; width:112%;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">            
+                <tbody>
+                  <tr>
+                    <th width="40%" align="right">ID:&nbsp;</th>
+                    <td>
+                        {id}
+                        <input type="hidden" id="id_horas_extra" name="id_horas_extra" value="{id}"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th align="right">Nombre Completo:&nbsp;</th>
+                    <td>{nombre}</td>
+                  </tr>
+                  <tr>
+                    <th align="right">Clave de Empleado:&nbsp;</th>
+                    <td>{clave}</td>
+                  </tr>
+                  <tr>
+                    <th align="right">Fecha:&nbsp;</th>
+                    <td>
+                        {fecha}
+                        <input type="hidden" id="fecha" name="fecha" value="{fecha}"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th align="right">Tiempo extra:&nbsp;</th>
+                    <td>
+                        {horas}
+                        <input type="hidden" id="tiempoextra" name="tiempoextra" value="{horas}"/>
+                        <input type="hidden" id="restan_horas" name="restan_horas"  />
+                        <input type="hidden" id="restan_minutos" name="restan_minutos"  />
+                        <input type="hidden" id="tiempoextra_final" name="tiempoextra_final" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" height="3px;"><hr/></td>
+                  </tr>
+                  <tr>
+                    <th align="right">Semana de evento:&nbsp;</th>
+                    <td>
+                        {semana_iso}
+                        <input type="hidden" id="semana_iso" name="semana_iso" value="{semana_iso}"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" height="3px;"><hr/></td>
+                  </tr>
+                    <td colspan="2">
+                        <div id="captura">                        
+                            <table width="100%" border="0">     
+
+                                <tr>
+                                    <th colspan="5" align="center">Autorizar tiempo extra&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align="right">Horas:&nbsp;</td>
+                                    <td colspan="4" class="slider-container">
+                                        <input type="text" id="horas" name="horas" readonly class="slider-label" />
+                                        <div id="slider-horas" class="slider-bar"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">Minutos:&nbsp;</td>
+                                    <td colspan="4" class="slider-container">
+                                        <input type="text" id="minutos" name="minutos" readonly class="slider-label" />
+                                        <div id="slider-minutos" class="slider-bar"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">Argumento:&nbsp;</td>
+                                    <td colspan="4" >
+                                        <input type="text" id="argumento" name="argumento" />
+                                </tr>
+                                <tr>
+                                    <td colspan="5" align="center">
+                                        <input id="btnCerrar" type="button" class="btn btn-gray" value="{cerrar}" onclick="location.reload(true);">
+                                        &nbsp;&nbsp;&nbsp;
+                                        <input id="btnGuardar" type="button" class="btn btn-gray" value="{guardar}" onclick="btnSubmit()">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>

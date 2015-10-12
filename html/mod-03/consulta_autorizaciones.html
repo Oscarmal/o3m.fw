@@ -1,0 +1,27 @@
+        <div id="xls" style="width:100%; text-align:right;"><span class="link-xls" onclick="descargar_xls(2);"></span></div>
+        <table width="100%" border="1" cellspacing="2" cellpadding="2" class="display captura" id="jGrid">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre Completo</th>
+              <th>ID Nómina</th>
+              <th>CID Empleado</th>
+              <th>Estado</th>
+              <th>Sucursal</th>
+              <th>Área</th>
+              <th>Puesto</th>
+              <th>Fecha</th>
+              <th>Tiempo extra Capturado</th>              
+              <th>Tiempo extra Autorizado</th>
+              <th>Última Autorización</th>
+              <th>Estatus</th>
+            </tr>
+          </thead>
+          <tbody>
+            {TBL_RESULTS}
+          </tbody>
+        </table>
+        <br/>
+        <div align="center" style="height:100px;">
+          <span class="txt_largo">*Se muestran registros hasta un mes atras.</span>
+        </div>

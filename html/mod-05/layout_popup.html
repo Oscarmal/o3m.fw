@@ -1,0 +1,52 @@
+        {MORE}
+        <div id="" style="border: 0px solid #333; margin-left:0px; width:112%;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">            
+                <tbody>                 
+                  <!-- <tr>                    
+                    <th colspan="1" width="40%" align="right">Periodo:&nbsp;</th>
+                    <td  align="left">
+                        {periodo} - {periodo_especial}
+                        <input type="hidden" id="periodo" name="periodo" value="{periodo}"/>
+                        <input type="hidden" id="periodo_especial" name="periodo_especial" value="{periodo_especial}"/>
+
+                        <input type="hidden" id="ids" name="ids" value="{ids}"/>
+                    </td>
+                    <th align="right">Año Periodo:&nbsp;</th>
+                    <td width="15%" >
+                        {periodo_anio}
+                        <input type="hidden" id="periodo_anio" name="periodo_anio" value="{periodo_anio}"/>
+                    </td>
+                  </tr> -->
+                  <tr>
+                    <th width="40%" colspan="1" align="right">Semana del Periodo:&nbsp;</th>
+                    <td colspan="3" class="slider-container">
+                        <input type="hidden" id="periodo" name="periodo" value="{periodo}"/>
+                        <input type="hidden" id="periodo_especial" name="periodo_especial" value="{periodo_especial}"/>
+                        <input type="hidden" id="periodo_anio" name="periodo_anio" value="{periodo_anio}"/>
+                        <input type="hidden" id="ids" name="ids" value="{ids}"/>
+
+                        <input type="text" id="semana" name="semana" onkeyup="slider_semana(this.value);" class="slider-label" />
+                        <div id="slider-semana" class="slider-bar"></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" height="3px;"><hr/></td>
+                  </tr>
+                    <td colspan="4">
+                        <div id="captura">                        
+                            <table width="100%" border="0">                                
+                                <tr>
+                                    <td colspan="5" align="center">
+                                        <input id="btnCerrar" type="button" class="btn btn-gray" value="{cerrar}" onclick="location.reload(true);">
+                                        &nbsp;&nbsp;&nbsp;
+                                        <input id="btnGuardar" type="button" class="btn btn-gray" value="{guardar}" onclick="btnSubmit()">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+            </table>
+        </div>
