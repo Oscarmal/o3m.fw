@@ -1,5 +1,5 @@
 logs/
-tmp/
+#tmp/
 #docs/
-common/php/inc.path.php
-src/.htaccess
+#common/php/inc.path.php
+#src/.htaccess
