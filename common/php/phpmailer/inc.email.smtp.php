@@ -3,7 +3,7 @@
 function send_mail_smtp($data=array()){
 /**
 * Descripcion:	Envia email usando SMTP
-* Creación:		2015-01-28
+* Creación:		2015-01-28; 2015-10-12;
 * @author 		Oscar Maldonado - O3M
 */
 	global $Path, $cfg;
