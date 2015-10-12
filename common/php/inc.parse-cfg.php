@@ -61,13 +61,15 @@ function load_vars($filename='') {
 				}elseif(strtolower($db[db_connection]) === 'prod' && $db[db_onoff]){
 					switch (strtolower($db[db_engine])) {
 						case 'mysql':
-							$db[host] = $db[db_prod_host];
-							$db[user] = $db[db_prod_user];
-							$db[pass] = $db[db_prod_pass];
-							$db[db] = $db[db_prod_db];
+							$db[host] 	= $db[db_prod_host];
+							$db[user] 	= $db[db_prod_user];
+							$db[pass] 	= $db[db_prod_pass];
+							$db[db1] 	= $db[db_prod_db1];
+							$db[db2] 	= $db[db_prod_db2];
+							$db[db3] 	= $db[db_prod_db3];
 							$db[conn_std] = $db[db_prod_host].','.$db[db_prod_user].','.$db[db_prod_pass];
-							$db[conn_dbi] = $db[db_prod_host].','.$db[db_prod_user].','.$db[db_prod_pass].','.$db[db_prod_db];
-							$db[conn_pdo] = 'mysql:host='.$db[db_prod_host].';dbname='.$db[db_prod_db].', '.$db[db_prod_user].', '.$db[db_prod_pass];
+							$db[conn_dbi] = $db[db_prod_host].','.$db[db_prod_user].','.$db[db_prod_pass].','.$db[db_prod_db1];
+							$db[conn_pdo] = 'mysql:host='.$db[db_prod_host].';dbname='.$db[db_prod_db1].', '.$db[db_prod_user].', '.$db[db_prod_pass];
 							break;	
 						case 'postgres':
 							break;

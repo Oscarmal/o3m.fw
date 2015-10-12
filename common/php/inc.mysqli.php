@@ -7,7 +7,7 @@
 
 function SQLConn() {
 	global $db;
-	$link = new mysqli($db[host],$db[user],$db[pass],$db[db2]);
+	$link = new mysqli($db[host],$db[user],$db[pass],$db[db1]);
 	if ($link->connect_error) {
 		echo "Error de Connexion ($link->connect_errno) $link->connect_error\n".$db[conn_dbi];
 		exit;
