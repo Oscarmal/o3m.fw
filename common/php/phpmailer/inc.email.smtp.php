@@ -10,12 +10,12 @@ function send_mail_smtp($data=array()){
 	if($cfg[email_onoff]){
 		require_once $Path[php].'phpmailer/PHPMailerAutoload.php';
 		// Variables recibidas
-		$html_tpl 		= $data[html_tpl];
-		$asunto 		= $data[asunto];
-		$adjuntos 		= $data[adjuntos];
-		$destinatarios 	= $data[destinatarios];		
-		$destinatariosCc  = $data[destinatariosCC];
-		$destinatariosBcc = $data[destinatariosBCC];
+		$html_tpl 			= $data[html_tpl];
+		$asunto 			= $data[asunto];
+		$adjuntos 			= $data[adjuntos];
+		$destinatarios 		= $data[destinatarios];		
+		$destinatariosCc  	= $data[destinatariosCC];
+		$destinatariosBcc 	= $data[destinatariosBCC];
 		//Crea instancia
 		$mail = new PHPMailer;
 		//Establece uso de SMTP
@@ -24,19 +24,21 @@ function send_mail_smtp($data=array()){
 		// 0 = off (for production use)
 		// 1 = client messages
 		// 2 = client and server messages
-		$mail->SMTPDebug = 0;
+		$mail->SMTPDebug 	= 0;
 		//Servidor
-		$mail->Debugoutput 	= 'html';
-		$mail->Host 		= $cfg[email_host];
-		$mail->Port 		= $cfg[email_port];
-		$mail->SMTPSecure 	= $cfg[email_stmp_secure];
+		$mail->Debugoutput 	= 'html';		
 		$mail->SMTPAuth 	= $cfg[email_stmp_auth];
+		$mail->SMTPSecure 	= $cfg[email_stmp_secure];
+		$mail->Port 		= $cfg[email_port];
 		//Emisor Data
-		$mail->Username = $cfg[email_user];
-		$mail->Password = $cfg[email_pass];
-		$mail->setFrom($cfg[email_address], $cfg[email_name]);
+		$cuenta				= (!$cfg[email_cuenta])?1:$cfg[email_cuenta];
+		$mail->Host 		= $cfg['email_'.$cuenta.'_host'];
+		$mail->Username 	= $cfg['email_'.$cuenta.'_user'];
+		$mail->Password 	= $cfg['email_'.$cuenta.'_pass'];
+		$mail->Address 		= $cfg['email_'.$cuenta.'_address'];
+		$mail->setFrom($mail->Address, $cfg[email_name]);
 		//Direccion de respuesta
-		$mail->addReplyTo($cfg[email_address], $cfg[email_name]);
+		$mail->addReplyTo($mail->Address, $cfg[email_name]);
 		//Receptor Data
 		if(count($destinatarios)){
 			foreach($destinatarios as $destinatario){
