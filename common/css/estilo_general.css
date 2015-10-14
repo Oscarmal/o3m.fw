@@ -121,7 +121,7 @@ padding: 0 0 0 60px;
 float:left;
 padding:0px;
 }
-.menu li a{
+.menu li a, .menu_opt{
 background: #00919e;
 border-left: 1px solid #3D8272;
 color:#ffffff; /* Color de la fuente */
@@ -133,7 +133,7 @@ padding:0px 25px; /* Espacio entre cada pestaña */
 text-align:center;
 text-decoration:none;
 }
-.menu li a:hover, .menu ul li:hover a {
+.menu li a:hover, .menu ul li:hover a, .menu_opt:hover {
 background: #036e78; /* Color de las pestañas al pasar el cursor */
 color:#FFFFFF; /* Color del texto al pasar el cursor */
 text-decoration:none;
@@ -159,10 +159,10 @@ margin:0px;
 padding:0px;
 width:200px;
 }
-.menu li:hover li a {
+.menu li:hover li a, .menu_opt:hover {
 background:none;
 }
-.menu li ul a {
+.menu li ul a, .menu li ul span, .menu_opt {
 display:block;
 height:40px;
 font-size:12px;
@@ -171,7 +171,7 @@ margin:0px;
 padding:0px 10px 0px 15px;
 text-align:left;
 }
-.menu li ul a:hover, .menu li ul li:hover a{
+.menu li ul a:hover, .menu li ul li:hover a, .menu_opt:hover{
 background: #036e78; /* Color de las subpestañas al pasar el cursor */
 color:#ffffff;
 text-decoration:none;

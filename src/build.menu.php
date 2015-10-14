@@ -106,11 +106,11 @@ function buildMenu(){
 		#Texto
 		$texto  = utf8_encode($menus[$i][texto]);
 		#Imagen
-		$imagen = (!empty($menus[$i][ico]))?'<img src="'.$Path[img].$menus[$i][ico].'" alt="" class="icono_dos"/>':'';
+		$imagen = (!empty($menus[$i][ico]))?'<img src="'.$Path[img].$menus[$i][ico].'" alt="'.utf8_encode($menus[$i][texto]).'" class="icono_dos"/>':'';
 		#onClick
-		$onclick = (!empty($menus[$i][link]))?'onclick="location.href=\''.$link.'\';" target="_self"':'';
+		$onclick = (!empty($menus[$i][link]))?'onclick="location.href=\''.$link.'\';"':'';
 		#Elemento final
-		$html = '<a href="#" '.$onclick.'>'.$imagen.$texto.'</a>';		
+		$html = '<span class="menu_opt" id="'.$menus[$i][menu].'" '.$onclick.'>'.$imagen.$texto.'</span>';		
 		#Construccion de arreglo
 		switch ($menus[$i][nivel]) {
 			case 1: $subs =& $menu_array; break;
