@@ -10,31 +10,33 @@ function buildMenu(){
 	global $cfg, $Path, $usuario;
 	#Extraccion de datos de la DB-tabla de menú
 	$menus = select_menus();
-	#Construcción de menu
-	for($i=0; $i<count($menus); $i++){
-		#Link
-		$e = explode('/', $menus[$i][link]);
-		$enlace = ($cfg[encrypt_onoff])?encrypt(strtoupper($e[0]),1).'/'.encrypt(strtoupper($e[1]),1):strtolower($menus[$i][link]);
-		$link 	= $Path['url'].$enlace;
-		#Texto
-		$texto  = utf8_encode($menus[$i][texto]);
-		#Imagen
-		$imagen = (!empty($menus[$i][ico]))?'<img src="'.$Path[img].$menus[$i][ico].'" alt="'.utf8_encode($menus[$i][texto]).'" class="icono_dos"/>':'';
-		#onClick
-		$onclick = (!empty($menus[$i][link]))?'onclick="location.href=\''.$link.'\';"':'';
-		#Elemento final
-		$html = '<span class="menu_opt" id="'.$menus[$i][menu].'" '.$onclick.'>'.$imagen.$texto.'</span>';		
-		#Construccion de arreglo
-		switch ($menus[$i][nivel]) {
-			case 1: $subs =& $menu_array; break;
-			case 2: $subs =& $menu_array[$menus[$i][id_grupo]][subs]; break;
-			case 3: $subs =& $menu_array[$menus[$i][id_grupo]][subs][$menus[$i][id_superior]][subs]; break;
+	if($menus){
+		#Construcción de menu
+		foreach($menus as $menu_element){
+			#Link
+			$e = explode('/', $menu_element[link]);
+			$enlace = ($cfg[encrypt_onoff])?encrypt(strtoupper($e[0]),1).'/'.encrypt(strtoupper($e[1]),1):strtolower($menu_element[link]);
+			$link 	= $Path['url'].$enlace;
+			#Texto
+			$texto  = utf8_encode($menu_element[texto]);
+			#Imagen
+			$imagen = (!empty($menu_element[ico]))?'<img src="'.$Path[img].$menu_element[ico].'" alt="'.utf8_encode($menu_element[texto]).'" class="icono_dos"/>':'';
+			#onClick
+			$onclick = (!empty($menu_element[link]))?'onclick="location.href=\''.$link.'\';"':'';			
+			#Construccion de arreglo
+			switch ($menu_element[nivel]) {
+				case 1: $subs =& $menu_array; break;
+				case 2: $subs =& $menu_array[$menu_element[id_grupo]][subs]; break;
+				case 3: $subs =& $menu_array[$menu_element[id_grupo]][subs][$menu_element[id_superior]][subs]; $margen='&nbsp;&nbsp'; break;
+			}
+			#Elemento final
+			$html = '<span class="menu_opt" id="'.$menu_element[menu].'" '.$onclick.'>'.$margen.$imagen.$texto.'</span>';		
+			$subs [$menu_element[id_menu]] = array(name=>$menu_element[texto], html=>$html, subs=>array());
+			unset($subs, $margen);
 		}
-		$subs [$menus[$i][id_menu]] = array(name=>$menus[$i][texto], html=>$html, subs=>array());
-		unset($subs);
-	}
-	$menu_html = build_ul_menu($menu_array);	
-	return $menu_html;
+		$menu_html = build_ul_menu($menu_array);	
+		return $menu_html;
+	}else{return false;}
 }
 function select_menus($id_grupo=false, $nivel=false){
 // Regresa listado de la tabla de mené del sistema
