@@ -95,6 +95,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 
 
 /* Menu horizontal Blog Nivel */
+.menu_opt{cursor:pointer; cursor: hand}
 #menuWrapper {
 width:100%; /* Ancho del menú */
 height:40px;
