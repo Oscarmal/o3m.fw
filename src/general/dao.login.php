@@ -32,6 +32,8 @@ function login($usuario, $clave){
 				,d.mod8
 				,d.mod9
 				,d.mod10
+				,d.visible
+				,d.invisible
 				,COUNT(a.id_personal) as perfiles
 				FROM $db[tbl_usuarios] a
 				LEFT JOIN $db[tbl_personal] b USING(id_personal)
@@ -126,6 +128,8 @@ function login_unico($id_usuario){
 				,d.mod8
 				,d.mod9
 				,d.mod10
+				,d.visible
+				,d.invisible
 				FROM $db[tbl_usuarios] a
 				LEFT JOIN $db[tbl_personal] b USING(id_personal)
 				LEFT JOIN $db[tbl_empresas] c USING(id_empresa)

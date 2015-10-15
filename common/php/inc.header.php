@@ -87,8 +87,10 @@ $usuario[accesos][mod7]		= $_SESSION[user]['accesos']['mod7'];
 $usuario[accesos][mod8]		= $_SESSION[user]['accesos']['mod8'];
 $usuario[accesos][mod9]		= $_SESSION[user]['accesos']['mod9'];
 $usuario[accesos][mod10]	= $_SESSION[user]['accesos']['mod10'];
-$usuario[periodo_inicio]	= $_SESSION[user]['periodo_inicio'];
-$usuario[periodo_fin]		= $_SESSION[user]['periodo_fin'];
+$usuario[accesos][visible]	= $_SESSION[user]['accesos']['visible'];
+$usuario[accesos][invisible]= $_SESSION[user]['accesos']['invisible'];
+
+// dump_var($usuario);
 # Regionalización
 $pais_params = (!isset($_SESSION[pais_params]))?strtolower($cfg[path_pais_params]):strtolower($_SESSION[pais_params]);
 pais_params($Raiz[local].$pais_params);

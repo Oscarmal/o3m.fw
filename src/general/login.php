@@ -155,8 +155,12 @@ function llena_sesion($usuario=array()){
 	$_SESSION[user]['accesos']['mod8']	= $usuario[mod8];
 	$_SESSION[user]['accesos']['mod9']	= $usuario[mod9];
 	$_SESSION[user]['accesos']['mod10']	= $usuario[mod10];
-	$_SESSION[user]['periodo_inicio']	= $usuario[periodo_inicio];
-	$_SESSION[user]['periodo_fin']		= $usuario[periodo_fin];
+	#Accesos en menú
+	$visible 	= array_filter(preg_split("/[\s,;|*]+/", $usuario[visible]));
+	$invisible	= array_filter(preg_split("/[\s,;|*]+/", $usuario[invisible]));
+	$invisible 	= array_diff($invisible, $visible);
+	$_SESSION[user]['accesos']['visible']	= implode(',',$visible);
+	$_SESSION[user]['accesos']['invisible']	= implode(',',$invisible);
 	return true;
 }
 

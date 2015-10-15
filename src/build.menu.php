@@ -11,7 +11,11 @@ function buildMenu(){
 	#Extraccion de datos de la DB-tabla de menú
 	$menus = select_menus();
 	if($menus){
-		#Construcción de menu
+		$menus = (!is_array($menus[0]))?array($menus):$menus;
+		#Deteccion de total de elementos por grupo
+		foreach($menus as $elm){$grupos [] = $elm[id_grupo];}
+		$menu_array[grupos] = array_count_values($grupos);	
+		#Construcción de menu				
 		foreach($menus as $menu_element){
 			#Link
 			$e = explode('/', $menu_element[link]);
@@ -30,25 +34,40 @@ function buildMenu(){
 				case 3: $subs =& $menu_array[$menu_element[id_grupo]][subs][$menu_element[id_superior]][subs]; $margen='&nbsp;&nbsp'; break;
 			}
 			#Elemento final
-			$html = '<span class="menu_opt" id="'.$menu_element[menu].'" '.$onclick.'>'.$margen.$imagen.$texto.'</span>';		
-			$subs [$menu_element[id_menu]] = array(name=>$menu_element[texto], html=>$html, subs=>array());
+			// $html 	= '<a href="#" class="menu_opt" id="'.$menu_element[menu].'" '.$onclick.'>'.$margen.$imagen.$texto.$flecha.'</a>'.$input;		
+			$html 	= $margen.$imagen.$texto;		
+			$subs [$menu_element[id_menu]] = array(
+						id_menu 	=> $menu_element[id_menu], 
+						id_grupo 	=> $menu_element[id_grupo], 
+						menu 		=> $menu_element[menu],
+						texto 		=> $menu_element[texto], 
+						nivel 		=> $menu_element[nivel], 
+						html 		=> $html, 
+						onclick 	=> $onclick,
+						subs 		=> array()
+					);
 			unset($subs, $margen);
-		}
-		$menu_html = build_ul_menu($menu_array);	
+		}		
+		$menu_html = build_ul_menu_01($menu_array);	
 		return $menu_html;
 	}else{return false;}
 }
 function select_menus($id_grupo=false, $nivel=false){
 // Regresa listado de la tabla de mené del sistema
-	global $db;
+	global $db, $usuario;
+	$si = "SELECT id_menu FROM $db[tbl_menus] WHERE id_grupo IN (".$usuario[accesos][visible].")";
+	$no = "SELECT id_menu FROM $db[tbl_menus] WHERE id_menu IN (".$usuario[accesos][invisible].")";
+	$visible 	= ($usuario[accesos][visible])?"AND a.id_menu IN(".$si.")":'';
+	$invisible 	= ($usuario[accesos][invisible])?"AND a.id_menu NOT IN(".$no.")":'';
 	$filtro .= ($id_grupo)?"AND a.id_grupo='$id_grupo'":'';
 	$filtro .= ($nivel)?"AND a.nivel='$nivel'":'';
-	$sql = "SELECT a.*, b.menu as pertenece, c.menu as superior	,CONCAT(a.id_superior,'-',a.orden,'-',a.nivel) as llave
+	$sql = "SELECT a.*, b.menu as pertenece, c.menu as superior
 			FROM $db[tbl_menus] a
 			LEFT JOIN $db[tbl_menus] b ON a.id_grupo=b.id_menu AND b.nivel=1 
 			LEFT JOIN $db[tbl_menus] c ON a.id_superior=c.id_menu
-			WHERE 1 AND a.activo=1 $filtro
+			WHERE 1 AND a.activo=1 $visible $invisible $filtro
 			ORDER BY a.id_grupo, a.nivel, a.orden ASC;";
+			// dump_var($sql);
 	$resultado = SQLQuery($sql);
 	$resultado = ($resultado[0]) ? $resultado : false ;
 	return $resultado;
@@ -73,6 +92,49 @@ function build_ul_menu($array=array()){
 		foreach($array as $elemento){
 			$html.= "\n";
 			$html.= ($elemento[subs])?'<li>'.$elemento[html].build_ul_menu($elemento[subs]).'</li>':'<li>'.$elemento[html].'</li>';			
+	  	} 
+	  	$html .= "\n".'</ul>'; 
+	  	return $html;
+	}else{ return false;}
+}
+
+function build_ul_menu_01($array=array()){
+// MENÚ - Construye una lista HTML a partir de un arreglo recibido:  <ul><li>[datos]</li>/ul>
+	if($array){
+		#Grupos
+		if(array_key_exists('grupos', $array)){
+			$grupos = $array[grupos];
+			unset($array[grupos]);
+		}
+		#Detección de nivel
+		if($array[nivel]){
+			$clase_ul 	= 'sub-menu';			
+		}else{
+			$clase_ul 	= 'main-menu cf';
+			$html 	   .= '<label for="tm" id="toggle-menu">Menu<span class="drop-icon">▾</span></label>
+			<input type="checkbox" id="tm">';
+		}	
+		#Inicio de lista
+	  	$html .= "\n".'<ul class="'.$clase_ul.'">';
+		foreach($array as $elemento){
+			#Submenu	
+			if($grupos[$elemento[id_grupo]]>1){
+				#Flechas
+				$flecha = ' <span class="drop-icon">▾</span><label class="drop-icon" for="sm'.$elemento[id_menu].'">▾</label>';
+				$input 	= '<input type="checkbox" id="sm'.$elemento[id_menu].'">';
+			}else{unset($flecha, $input);}
+			$html_link 	= '<a href="#" '.$elemento[onclick].'>'.$elemento[html].$flecha.'</a>'.$input;
+			#HTML 
+			if(is_array($elemento)){
+				$html.= "\n";
+				if($elemento[subs]){		
+					$elemento[subs][nivel] = $elemento[nivel];
+					$elemento[grupos] = $grupos;
+					$html.='<li>'.$html_link.build_ul_menu_01($elemento[subs]).'</li>';
+				}else{
+					$html.='<li>'.$html_link.'</li>';
+				}
+			}
 	  	} 
 	  	$html .= "\n".'</ul>'; 
 	  	return $html;
