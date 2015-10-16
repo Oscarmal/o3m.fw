@@ -55,10 +55,12 @@ function buildMenu(){
 function select_menus($id_grupo=false, $nivel=false){
 // Regresa listado de la tabla de mené del sistema
 	global $db, $usuario;
-	$si = "SELECT id_menu FROM $db[tbl_menus] WHERE id_grupo IN (".$usuario[accesos][visible].")";
-	$no = "SELECT id_menu FROM $db[tbl_menus] WHERE id_menu IN (".$usuario[accesos][invisible].")";
-	$visible 	= ($usuario[accesos][visible])?"AND a.id_menu IN(".$si.")":'';
-	$invisible 	= ($usuario[accesos][invisible])?"AND a.id_menu NOT IN(".$no.")":'';
+	// $si = "SELECT id_menu FROM $db[tbl_menus] WHERE id_grupo IN (".$usuario[accesos][visible].")";
+	// $no = "SELECT id_menu FROM $db[tbl_menus] WHERE id_menu IN (".$usuario[accesos][invisible].")";
+	// $visible 	= ($usuario[accesos][visible])?"AND a.id_menu IN(".$si.")":'';
+	// $invisible 	= ($usuario[accesos][invisible])?"AND a.id_menu NOT IN(".$no.")":'';
+	$visible 	= ($usuario[accesos][visible])?"AND FIND_IN_SET(a.id_menu, '".$usuario[accesos][visible]."')":'';
+	$invisible 	= ($usuario[accesos][invisible])?"AND (NOT FIND_IN_SET(a.id_grupo, '".$usuario[accesos][invisible]."') AND NOT FIND_IN_SET(a.id_menu, '".$usuario[accesos][invisible]."'))":'';
 	$filtro .= ($id_grupo)?"AND a.id_grupo='$id_grupo'":'';
 	$filtro .= ($nivel)?"AND a.nivel='$nivel'":'';
 	$sql = "SELECT a.*, b.menu as pertenece, c.menu as superior
@@ -91,7 +93,8 @@ function build_ul_menu($array=array()){
 	  	$html = "\n".'<ul>';
 		foreach($array as $elemento){
 			$html.= "\n";
-			$html.= ($elemento[subs])?'<li>'.$elemento[html].build_ul_menu($elemento[subs]).'</li>':'<li>'.$elemento[html].'</li>';			
+			$html_link 	= '<a href="#" '.$elemento[onclick].'>'.$elemento[html].$flecha.'</a>'.$input;
+			$html.= ($elemento[subs])?'<li>'.$html_link.build_ul_menu($elemento[subs]).'</li>':'<li>'.$html_link.'</li>';			
 	  	} 
 	  	$html .= "\n".'</ul>'; 
 	  	return $html;
@@ -111,7 +114,7 @@ function build_ul_menu_01($array=array()){
 			$clase_ul 	= 'sub-menu';			
 		}else{
 			$clase_ul 	= 'main-menu cf';
-			$html 	   .= '<label for="tm" id="toggle-menu">Menu<span class="drop-icon">▾</span></label>
+			$html 	   .= '<label for="tm" id="toggle-menu">Menú<span class="drop-icon">▾</span></label>
 			<input type="checkbox" id="tm">';
 		}	
 		#Inicio de lista

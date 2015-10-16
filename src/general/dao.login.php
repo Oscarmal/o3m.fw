@@ -22,25 +22,20 @@ function login($usuario, $clave){
 				,c.id_empresa as id_empresa
 				,c.id_nomina as id_empresa_nomina
 				,c.pais
-				,d.mod1
-				,d.mod2
-				,d.mod3
-				,d.mod4
-				,d.mod5
-				,d.mod6
-				,d.mod7
-				,d.mod8
-				,d.mod9
-				,d.mod10
-				,d.visible
-				,d.invisible
+				,d.visible as visible_group
+				,d.invisible as invisible_group
+				/*,a.visible as visible_user*/
+				/* visible_user + Padres de grupo*/
+				,CONCAT(IFNULL(a.visible,''),',',(SELECT CAST(GROUP_CONCAT(DISTINCT id_grupo SEPARATOR ',') AS CHAR(1000)) FROM sis_menu WHERE FIND_IN_SET(id_menu, CONCAT(IFNULL(d.visible,''),',',IFNULL(a.visible,'')))  GROUP BY '')) as visible_user
+				,a.invisible as invisible_user
 				,COUNT(a.id_personal) as perfiles
 				FROM $db[tbl_usuarios] a
 				LEFT JOIN $db[tbl_personal] b USING(id_personal)
 				LEFT JOIN $db[tbl_empresas] c USING(id_empresa)
 				LEFT JOIN $db[tbl_grupos] d ON a.id_grupo=d.id_grupo
-				WHERE a.usuario='$usuario' and a.clave='$clave' and a.activo=1 and b.activo=1
+				WHERE a.usuario='$usuario' and a.clave='$clave' and a.activo=1 and b.activo=1 AND c.activo=1 AND d.activo=1
 				GROUP BY a.id_personal;";
+				// dump_var($sql);
 	$resultado = SQLQuery($sql);
 	$resultado = ($resultado[0]) ? $resultado : false ;
 	return $resultado;
@@ -118,23 +113,15 @@ function login_unico($id_usuario){
 				,c.id_empresa as id_empresa
 				,c.id_nomina as id_empresa_nomina
 				,c.pais
-				,d.mod1
-				,d.mod2
-				,d.mod3
-				,d.mod4
-				,d.mod5
-				,d.mod6
-				,d.mod7
-				,d.mod8
-				,d.mod9
-				,d.mod10
-				,d.visible
-				,d.invisible
+				,d.visible as visible_group
+				,d.invisible as invisible_group
+				,a.visible as visible_user
+				,a.invisible as invisible_user
 				FROM $db[tbl_usuarios] a
 				LEFT JOIN $db[tbl_personal] b USING(id_personal)
 				LEFT JOIN $db[tbl_empresas] c USING(id_empresa)
 				LEFT JOIN $db[tbl_grupos] d ON a.id_grupo=d.id_grupo
-				WHERE a.id_usuario='$id_usuario';";
+				WHERE a.id_usuario='$id_usuario' AND a.activo=1 AND b.activo=1 AND c.activo=1 AND d.activo=1;";
 	$resultado = SQLQuery($sql);
 	$resultado = ($resultado[0]) ? $resultado : false ;
 	return $resultado;

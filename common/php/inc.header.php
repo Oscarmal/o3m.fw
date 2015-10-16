@@ -2,7 +2,7 @@
 /**
 * Descripcion:	Establece ambiente de trabajo para cada página
 * Creación:		2014-06-11
-* Modificación:	2014-09-01, 2014-12-02; 2015-10-12
+* Modificación:	2014-09-01, 2014-12-02; 2015-10-12; 2015-10-16;
 * @author 		Oscar Maldonado - O3M
 *
 */
@@ -77,16 +77,6 @@ $usuario[empresa]			= $_SESSION[user]['empresa'];
 $usuario[id_empresa]		= $_SESSION[user]['id_empresa'];
 $usuario[id_empresa_nomina] = $_SESSION[user]['id_empresa_nomina'];
 $usuario[pais]				= $_SESSION[user]['pais'];
-$usuario[accesos][mod1]		= $_SESSION[user]['accesos']['mod1'];
-$usuario[accesos][mod2]		= $_SESSION[user]['accesos']['mod2'];
-$usuario[accesos][mod3]		= $_SESSION[user]['accesos']['mod3'];
-$usuario[accesos][mod4]		= $_SESSION[user]['accesos']['mod4'];
-$usuario[accesos][mod5]		= $_SESSION[user]['accesos']['mod5'];
-$usuario[accesos][mod6]		= $_SESSION[user]['accesos']['mod6'];
-$usuario[accesos][mod7]		= $_SESSION[user]['accesos']['mod7'];
-$usuario[accesos][mod8]		= $_SESSION[user]['accesos']['mod8'];
-$usuario[accesos][mod9]		= $_SESSION[user]['accesos']['mod9'];
-$usuario[accesos][mod10]	= $_SESSION[user]['accesos']['mod10'];
 $usuario[accesos][visible]	= $_SESSION[user]['accesos']['visible'];
 $usuario[accesos][invisible]= $_SESSION[user]['accesos']['invisible'];
 

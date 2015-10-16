@@ -145,22 +145,21 @@ function llena_sesion($usuario=array()){
 	$_SESSION[user]['id_empresa_nomina']= $usuario[id_empresa_nomina];	
 	$_SESSION[user]['empresa'] 			= $usuario[empresa];
 	$_SESSION[user]['pais'] 			= $usuario[pais];
-	$_SESSION[user]['accesos']['mod1']	= $usuario[mod1];
-	$_SESSION[user]['accesos']['mod2']	= $usuario[mod2];
-	$_SESSION[user]['accesos']['mod3']	= $usuario[mod3];
-	$_SESSION[user]['accesos']['mod4']	= $usuario[mod4];
-	$_SESSION[user]['accesos']['mod5']	= $usuario[mod5];
-	$_SESSION[user]['accesos']['mod6']	= $usuario[mod6];
-	$_SESSION[user]['accesos']['mod7']	= $usuario[mod7];
-	$_SESSION[user]['accesos']['mod8']	= $usuario[mod8];
-	$_SESSION[user]['accesos']['mod9']	= $usuario[mod9];
-	$_SESSION[user]['accesos']['mod10']	= $usuario[mod10];
-	#Accesos en menú
-	$visible 	= array_filter(preg_split("/[\s,;|*]+/", $usuario[visible]));
-	$invisible	= array_filter(preg_split("/[\s,;|*]+/", $usuario[invisible]));
-	$invisible 	= array_diff($invisible, $visible);
-	$_SESSION[user]['accesos']['visible']	= implode(',',$visible);
-	$_SESSION[user]['accesos']['invisible']	= implode(',',$invisible);
+	#Accesos en menú GROUP
+	$visible_group 		= array_filter(preg_split("/[\s,;|*]+/", $usuario[visible_group]));
+	$invisible_group	= array_filter(preg_split("/[\s,;|*]+/", $usuario[invisible_group]));
+	$invisible_group 	= array_diff($invisible_group, $visible_group);
+	#Accesos en menú USER
+	$visible_user 		= array_filter(preg_split("/[\s,;|*]+/", $usuario[visible_user]));
+	$invisible_user		= array_filter(preg_split("/[\s,;|*]+/", $usuario[invisible_user]));
+	#Accesos en menú FINAL
+	#USER tiene preferencia a GROUP
+	$visible_final		= array_diff(array_unique(array_merge($visible_group, $visible_user)),$invisible_user);
+	$invisible_final	= array_unique(array_merge($invisible_group, $invisible_user));
+	$invisible_final 	= array_diff($invisible_final, $visible_final);
+	$_SESSION[user]['accesos']['visible']			= implode(',',$visible_final);
+	$_SESSION[user]['accesos']['invisible']			= implode(',',$invisible_final);
+	// dump_var($_SESSION[user]);
 	return true;
 }
 
