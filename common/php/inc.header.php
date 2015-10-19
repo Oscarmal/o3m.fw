@@ -79,6 +79,7 @@ $usuario[id_empresa_nomina] = $_SESSION[user]['id_empresa_nomina'];
 $usuario[pais]				= $_SESSION[user]['pais'];
 $usuario[accesos][visible]	= $_SESSION[user]['accesos']['visible'];
 $usuario[accesos][invisible]= $_SESSION[user]['accesos']['invisible'];
+$usuario[menu]				= $_SESSION[user]['menu'];
 
 // dump_var($usuario);
 # Regionalización

@@ -4,6 +4,7 @@ define(MODULO, $in[modulo]);
 // Archivo DAO
 require_once($Path[src].strtolower(MODULO).'/dao.login.php');
 require_once($Path[src].'views.vars.'.strtolower(MODULO).'.php');
+require_once($Path[src].'build.menu.php');
 // Lógica de negocio
 if($in[accion]=='login-perfiles'){
 	if(!empty($ins[usuario]) && !empty($ins[clave])){			
@@ -159,6 +160,8 @@ function llena_sesion($usuario=array()){
 	$invisible_final 	= array_diff($invisible_final, $visible_final);
 	$_SESSION[user]['accesos']['visible']			= implode(',',$visible_final);
 	$_SESSION[user]['accesos']['invisible']			= implode(',',$invisible_final);
+	#Menú
+	$_SESSION[user]['menu'] 			= buildMenu();
 	// dump_var($_SESSION[user]);
 	return true;
 }

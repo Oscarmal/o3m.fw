@@ -13,8 +13,15 @@ function buildMenu(){
 	if($menus){
 		$menus = (!is_array($menus[0]))?array($menus):$menus;
 		#Deteccion de total de elementos por grupo
-		foreach($menus as $elm){$grupos [] = $elm[id_grupo];}
-		$menu_array[grupos] = array_count_values($grupos);	
+		foreach($menus as $elm){$grupos [] = $elm[id_grupo]; $subgrupos [] = $elm[id_superior];}
+		// $menu_array[grupos] = array_count_values($grupos);	
+		$grupos = array_count_values($grupos);
+		$subgrupos = array_count_values($subgrupos);
+		$subgrupos = array_diff_key($subgrupos, $grupos);
+		foreach ($subgrupos as $subgrupo => $sub) {
+			$grupos[$subgrupo] = $sub;
+		}
+	    $menu_array[grupos] = $grupos;
 		#Construcción de menu				
 		foreach($menus as $menu_element){
 			#Link

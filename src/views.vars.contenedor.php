@@ -135,8 +135,7 @@ function vars_frame($urlParams, $inc, $modulo, $seccion){
 		$HEADER 	= contenidoHtml($contenedor[FRM_HEADER], $header_opc);
 		// --
 		// FRM_MENU
-		require_once($Path[src].'build.menu.php');
-		$menu_opc = array(MENU => buildMenu());
+		$menu_opc 	= array(MENU => $usuario[menu]);
 		$MENU 		= contenidoHtml($contenedor[FRM_MENU], $menu_opc);
 		// --	
 		// FRM_FOOTER
