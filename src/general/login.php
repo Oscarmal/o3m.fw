@@ -161,7 +161,7 @@ function llena_sesion($usuario=array()){
 	$_SESSION[user]['accesos']['visible']			= implode(',',$visible_final);
 	$_SESSION[user]['accesos']['invisible']			= implode(',',$invisible_final);
 	#Menú
-	$_SESSION[user]['menu'] 			= buildMenu();
+	$_SESSION[user]['menu'] 			= buildMenu($_SESSION[user]['accesos']['visible'],$_SESSION[user]['accesos']['invisible']);
 	// dump_var($_SESSION[user]);
 	return true;
 }

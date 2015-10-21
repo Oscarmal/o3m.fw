@@ -6,10 +6,10 @@
 * Modificación:	2015-10-14;
 **/
 
-function buildMenu(){
+function buildMenu($visible=false, $invisible=false){
 	global $cfg, $Path, $usuario;
 	#Extraccion de datos de la DB-tabla de menú
-	$menus = select_menus();
+	$menus = select_menus(false,false,$visible,$invisible);
 	if($menus){
 		$menus = (!is_array($menus[0]))?array($menus):$menus;
 		#Deteccion de total de elementos por grupo
@@ -59,15 +59,17 @@ function buildMenu(){
 		return $menu_html;
 	}else{return false;}
 }
-function select_menus($id_grupo=false, $nivel=false){
+function select_menus($id_grupo=false, $nivel=false, $visible=false, $invisible=false){
 // Regresa listado de la tabla de mené del sistema
 	global $db, $usuario;
+	$visible = (!$visible)?$usuario[accesos][visible]:$visible;
+	$invisible = (!$invisible)?$usuario[accesos][invisible]:$invisible;
 	// $si = "SELECT id_menu FROM $db[tbl_menus] WHERE id_grupo IN (".$usuario[accesos][visible].")";
 	// $no = "SELECT id_menu FROM $db[tbl_menus] WHERE id_menu IN (".$usuario[accesos][invisible].")";
 	// $visible 	= ($usuario[accesos][visible])?"AND a.id_menu IN(".$si.")":'';
 	// $invisible 	= ($usuario[accesos][invisible])?"AND a.id_menu NOT IN(".$no.")":'';
-	$visible 	= ($usuario[accesos][visible])?"AND FIND_IN_SET(a.id_menu, '".$usuario[accesos][visible]."')":'';
-	$invisible 	= ($usuario[accesos][invisible])?"AND (NOT FIND_IN_SET(a.id_grupo, '".$usuario[accesos][invisible]."') AND NOT FIND_IN_SET(a.id_menu, '".$usuario[accesos][invisible]."'))":'';
+	$visible 	= ($visible)?"AND FIND_IN_SET(a.id_menu, '".$visible."')":'';
+	$invisible 	= ($invisible)?"AND (NOT FIND_IN_SET(a.id_grupo, '".$invisible."') AND NOT FIND_IN_SET(a.id_menu, '".$invisible."'))":'';
 	$filtro .= ($id_grupo)?"AND a.id_grupo='$id_grupo'":'';
 	$filtro .= ($nivel)?"AND a.nivel='$nivel'":'';
 	$sql = "SELECT a.*, b.menu as pertenece, c.menu as superior
